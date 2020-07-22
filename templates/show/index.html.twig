@@ -5,85 +5,16 @@
 {% block body %}
 <h1>Shows</h1>
     <section class="shows">
-        <article>
-            <h2>Show N°1</h2>
-            <div class="tag">Créer le 22/07/2020 par la troupe Wild Circus</div>
-            <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-                <a href="{{ path('representation') }}" class="btn btn-primary">Venez voir la suite</a>
-            </div>
-        </article>
-        <article>
-            <h2>Show N°2</h2>
-            <div class="tag">Créer le 22/07/2020 par la troupe Wild Circus</div>
-            <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-                <a href="{{ path('representation') }}" class="btn btn-primary">Venez voir la suite</a>
-            </div>
-        </article>
-        <article>
-            <h2>Show N°3</h2>
-            <div class="tag">Créer le 22/07/2020 par la troupe Wild Circus</div>
-            <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-                <a href="{{ path('representation') }}" class="btn btn-primary">Venez voir la suite</a>
-            </div>
-        </article>
-        <article>
-            <h2>Show N°4</h2>
-            <div class="tag">Créer le 22/07/2020 par la troupe Wild Circus</div>
-            <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-                <a href="{{ path('representation') }}" class="btn btn-primary">Venez voir la suite</a>
-            </div>
-        </article>
-        <article>
-            <h2>Show N°5</h2>
-            <div class="tag">Créer le 22/07/2020 par la troupe Wild Circus</div>
-            <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-                <a href="{{ path('representation') }}" class="btn btn-primary">Venez voir la suite</a>
-            </div>
-        </article>
-        <article>
-            <h2>Show N°6</h2>
-            <div class="tag">Créer le 22/07/2020 par la troupe Wild Circus</div>
-            <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-                <a href="{{ path('representation') }}" class="btn btn-primary">Venez voir la suite</a>
-            </div>
-        </article>
-        <article>
-            <h2>Show N°7</h2>
-            <div class="tag">Créer le 22/07/2020 par la troupe Wild Circus</div>
-            <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-                <a href="{{ path('representation') }}" class="btn btn-primary">Venez voir la suite</a>
-            </div>
-        </article>
-        <article>
-            <h2>Show N°8</h2>
-            <div class="tag">Créer le 22/07/2020 par la troupe Wild Circus</div>
-            <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-                <a href="{{ path('representation') }}" class="btn btn-primary">Venez voir la suite</a>
-            </div>
-        </article>
-        <article>
-            <h2>Show N°9</h2>
-            <div class="tag">Créer le 22/07/2020 par la troupe Wild Circus</div>
-            <div class="content">
-                <img src="http://placehold.it/350x150" alt="">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-                <a href="{{ path('representation') }}" class="btn btn-primary">Venez voir la suite</a>
-            </div>
-        </article>
+        {% for performance in performances %}
+            <article>
+                <h2>{{performance.name}}</h2>
+                <div class="tag">Date et heure de la représentation :{{ performance.showedAt | date('d/m/Y') }} à {{ performance.showedAt | date('H:i') }}.</div>
+                <div class="content">
+                    <img src="{{ performance.image }}" alt="">
+                    <p>{{  performance.description }}</p>
+                    <a href="{{ path('representation', {'id': performance.id }) }}" class="btn btn-primary">Venez voir la suite</a>
+                </div>
+            </article>
+        {% endfor%}
+    </section>
         {% endblock %}
