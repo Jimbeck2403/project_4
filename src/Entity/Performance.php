@@ -37,6 +37,11 @@ class Performance
      */
     private $showedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="performances_category")
+     */
+    private $category_id;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Performance
     public function setShowedAt(\DateTimeInterface $showedAt): self
     {
         $this->showedAt = $showedAt;
+
+        return $this;
+    }
+
+    public function getCategoryId(): ?Category
+    {
+        return $this->category_id;
+    }
+
+    public function setCategoryId(?Category $category_id): self
+    {
+        $this->category_id = $category_id;
 
         return $this;
     }
