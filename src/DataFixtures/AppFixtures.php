@@ -29,7 +29,7 @@ class AppFixtures extends Fixture
                $artist = new Artist();
 
                $artist->setName($faker->name())
-                      ->setDescription($faker->text())
+                      ->setDescription($faker->text(100))
                       ->setImage($faker->imageUrl())
                       ->setCategoryId($category);
                $manager->persist($artist);
@@ -39,7 +39,7 @@ class AppFixtures extends Fixture
                    $performance = new Performance();
 
                    $performance->setName($faker->word())
-                               ->setDescription($faker->text())
+                               ->setDescription($faker->text(100))
                                ->setImage($faker->imageUrl)
                                ->setShowedAt($faker->dateTimeBetween('now', '+2 years'))
                                ->setCategoryId($category);
