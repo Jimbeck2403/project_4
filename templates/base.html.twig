@@ -1,52 +1,64 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css"
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-            <a class="navbar-brand" href="#">Wild Circus</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <a class="navbar-brand" href="#">Wild Circus</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-            <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('home') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('artist') }}">Notre troupe</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('performance') }}">Nos shows</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{path('app_register')}}">Register</a>
-                    </li>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('home') }}">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('artist') }}">Notre troupe</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('performance') }}">Nos shows</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('app_register')}}">Register</a>
+            </li>
 
-                    {% if app.user %}
-                    {{ app.user.email }}
-                    <li class="nav-item">
+            {% if app.user %}
+                {{ app.user.email }}
+                <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_logout') }}"> Se déconnecter</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
+                </li>
+            {% else %}
+                <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_login') }}"> Se connecter</a>
-                    </li>
-                    {% endif %}
-                </ul>
+                </li>
+            {% endif %}
+        </ul>
 
-            </div>
-        </nav>
-        <div class="container">
-        {% block body %}{% endblock %}
-        </div>
+    </div>
+</nav>
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script>
+    $('.popover-dismiss').popover({
+            trigger: 'focus'
+    })
+</script>
+{% block javascripts %}{% endblock %}
 
-        {% block javascripts %}{% endblock %}
-    </body>
+</body>
 </html>
